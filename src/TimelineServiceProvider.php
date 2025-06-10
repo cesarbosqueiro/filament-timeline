@@ -2,6 +2,8 @@
 
 namespace Bosqro\Timeline;
 
+use Bosqro\Timeline\Commands\TimelineCommand;
+use Bosqro\Timeline\Testing\TestsTimeline;
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
@@ -13,8 +15,6 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Bosqro\Timeline\Commands\TimelineCommand;
-use Bosqro\Timeline\Testing\TestsTimeline;
 
 class TimelineServiceProvider extends PackageServiceProvider
 {
