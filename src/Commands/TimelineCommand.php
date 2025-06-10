@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Bosqro\Timeline\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class TimelineCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'timeline';
 
     public $description = 'My command';
 
