@@ -1,6 +1,6 @@
 {
     "name": "bosqro/timeline",
-    "description": "This is my package timeline",
+    "description": "Página customizada do Filament com timeline personalizável",
     "keywords": [
         "bosqro",
         "laravel",
@@ -39,8 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Bosqro\\Timeline\\": "src/",
-            "Bosqro\\Timeline\\Database\\Factories\\": "database/factories/"
+            "Bosqro\\Timeline\\": "src/"
         }
     },
     "autoload-dev": {
@@ -66,10 +65,7 @@
         "laravel": {
             "providers": [
                 "Bosqro\\Timeline\\TimelineServiceProvider"
-            ],
-            "aliases": {
-                "Timeline": "Bosqro\\Timeline\\Facades\\Timeline"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

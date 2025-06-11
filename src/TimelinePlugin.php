@@ -2,6 +2,7 @@
 
 namespace Bosqro\Timeline;
 
+use Bosqro\Timeline\Pages\TimelinePage;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
@@ -14,12 +15,14 @@ class TimelinePlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        //
+        $panel->pages([
+            TimelinePage::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
     {
-        //
+        // Aqui podemos adicionar lógica de boot se necessário
     }
 
     public static function make(): static

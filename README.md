@@ -1,78 +1,66 @@
-# This is my package timeline
+# Filament Timeline
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/bosqro/timeline.svg?style=flat-square)](https://packagist.org/packages/bosqro/timeline)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/bosqro/timeline/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/bosqro/timeline/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/bosqro/timeline/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/bosqro/timeline/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/bosqro/timeline.svg?style=flat-square)](https://packagist.org/packages/bosqro/timeline)
+Este pacote adiciona uma página customizada ao Filament com uma timeline totalmente personalizável.
 
+## Instalação
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Installation
-
-You can install the package via composer:
+Adicione o pacote ao seu projeto Laravel:
 
 ```bash
 composer require bosqro/timeline
 ```
 
-You can publish and run the migrations with:
+## Publicação das views
 
-```bash
-php artisan vendor:publish --tag="timeline-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="timeline-config"
-```
-
-Optionally, you can publish the views using
+Se desejar customizar a view da timeline, publique as views:
 
 ```bash
 php artisan vendor:publish --tag="timeline-views"
 ```
 
-This is the contents of the published config file:
+## Configuração
+
+1. Registre o plugin no seu painel Filament, normalmente em um ServiceProvider ou no `PanelProvider`:
 
 ```php
-return [
-];
+use Bosqro\Timeline\TimelinePlugin;
+
+Filament::plugin(TimelinePlugin::class);
 ```
 
-## Usage
+2. Acesse a página "Timeline" no menu do Filament para ver a timeline padrão.
+
+## Como adicionar a timeline em um Resource já existente
+
+Você pode incluir a timeline como uma página customizada dentro de qualquer Resource do Filament. Exemplo:
+
+1. No seu resource, adicione a página customizada:
 
 ```php
-$timeline = new Bosqro\Timeline();
-echo $timeline->echoPhrase('Hello, Bosqro!');
+use Bosqro\Timeline\Pages\TimelinePage;
+
+class SeuResource extends Resource
+{
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListSeuResource::class,
+            'create' => Pages\CreateSeuResource::class,
+            'edit' => Pages\EditSeuResource::class,
+            'timeline' => TimelinePage::class, // Adiciona a página timeline ao resource
+        ];
+    }
+}
 ```
 
-## Testing
+2. Agora, a timeline estará disponível como uma rota/página dentro do seu resource, podendo ser acessada pelo menu ou via URL.
 
-```bash
-composer test
-```
+## Personalização
 
-## Changelog
+Você pode passar eventos, ícones, cores e outras opções para a timeline. Veja a documentação na página da timeline para exemplos de uso.
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Se quiser customizar os dados, basta sobrescrever o array `$timelineEvents` na sua própria página customizada herdando de `TimelinePage`.
 
-## Contributing
+## Licença
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [Cesar](https://github.com/cesarbosqueiro)
-- [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+MIT
